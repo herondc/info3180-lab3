@@ -7,6 +7,8 @@ This file creates your application.
 
 from app import app
 from flask import render_template, request, redirect, url_for, flash
+from werkzeug.utils import secure_filename
+from forms import ContactForm
 
 
 ###
@@ -19,10 +21,17 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/about/')
+@app.route('/about')
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+    
+
+@app.route('/contact')
+def contact():
+    """Render the website's contact page."""
+    contactform = ContactForm()
+    return render_template('contact.html', form=contactform)
 
 
 ###

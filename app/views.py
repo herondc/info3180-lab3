@@ -31,7 +31,6 @@ def about():
 
 @app.route('/contact', methods=['GET','POST'])
 def contact():
-    """Render the website's contact page."""
     contactform = ContactForm()
     if request.method == 'POST':
         if contactform.validate_on_submit():
@@ -40,11 +39,10 @@ def contact():
             msg.body = contactform.message.data
             mail.send(msg)
             flash('You have successfully filled out the form')
-            return redirect(url_for('about'))
+            return redirect(url_for('home'))
         else:
             flash('please fill out form properly')
     return render_template('contact.html', form=contactform)
-
 
 ###
 # The functions below should be applicable to all Flask apps.

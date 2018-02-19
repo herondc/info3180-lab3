@@ -34,10 +34,13 @@ def contact():
     """Render the website's contact page."""
     contactform = ContactForm()
     if request.method == 'POST':
-        msg = Message( contactform.subject.data, sender=(contactform.name.data,
-        contactform.email.data), recipients=["test@test.com"])
-        msg.body = contactform.message.data
-        mail.send(msg)
+        if contactform.validate_on_submit():
+            msg = Message( contactform.subject.data, sender=(contactform.name.data,
+            contactform.email.data), recipients=["test@test.com"])
+            msg.body = contactform.message.data
+            mail.send(msg)
+            return render_template('home.html')
+        flash('all')
     return render_template('contact.html', form=contactform)
 
 

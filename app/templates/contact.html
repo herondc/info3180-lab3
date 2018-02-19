@@ -6,16 +6,28 @@
 <form method="post" action="{{ url_for('contact') }}">
         {{ form.csrf_token }}
         <div class="form-group">
-            {{ form.name.label }} {{ form.name(class="form-control") }}
+            <strong>{{ form.name.label }}</strong>
+            
+            <p>Please enter your full name</p> 
+            {{ form.name(class="form-control") }}
         </div>
         <div class="form-group">
-            {{ form.email.label }} {{ form.email(class="form-control", placeholder="username@example.com") }}
+             <strong>{{ form.email.label }}</strong>
+            
+            <p>Please enter your r-mail address</p> 
+            {{ form.email(class="form-control", placeholder="username@example.com") }}
         </div>
         <div class="form-group">
-            {{ form.subject.label }} {{ form.subject(class="form-control") }}
+             <strong> {{ form.subject.label }}</strong>
+           
+            <p>Please enter the subject of your message</p> 
+            {{ form.subject(class="form-control") }}
         </div>
         <div class="form-group">
-            {{ form.message.label }} {{ form.message(class="form-control") }}
+             <strong>{{ form.message.label }}</strong>
+            
+            <p>Please enter the message you would like to send</p> 
+            {{ form.message(class="form-control") }}
         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -21,6 +21,14 @@ from forms import ContactForm
 def home():
     """Render website's home page."""
     return render_template('home.html')
+    
+@app.route('/index')
+def index():
+    x=2
+    # return "Hello World!"
+    if x>1:
+        return redirect(url_for('home'))
+    return render_template('about.html', name="Mary Jane")
 
 
 @app.route('/about')
@@ -40,8 +48,7 @@ def contact():
             mail.send(msg)
             flash('You have successfully filled out the form')
             return redirect(url_for('home'))
-        else:
-            flash('please fill out form properly')
+        flash('please fill out form properly')
     return render_template('contact.html', form=contactform)
 
 ###
